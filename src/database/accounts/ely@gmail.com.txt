@@ -1,12 +1,12 @@
 ely@gmail.com
 ely
 ely
-99700.0
-2024-04-30
-2024-09-12
-2024-12-30
+7978.0
+N/A
+N/A
+N/A
 N/A
 true
 true
 true
-true
+false

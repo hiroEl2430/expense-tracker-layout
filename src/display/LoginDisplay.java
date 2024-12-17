@@ -8,15 +8,15 @@ public class LoginDisplay extends menu {
     @Override
     public void display() {
         System.out.println("\n\n\n\n\n\n\n\n\n");
-        System.out.println(YELLOW + "\t\t\t\t\t\t\t\t __        ______     ______         __  .__   __. " + RESET);
-        System.out.println(YELLOW + "\t\t\t\t\t\t\t\t|  |      /  __  \\   /  ____|       |  | |  \\ |  | " + RESET);
-        System.out.println(YELLOW + "\t\t\t\t\t\t\t\t|  |     |  |  |  | |  |  __        |  | |   \\|  | " + RESET);
-        System.out.println(YELLOW + "\t\t\t\t\t\t\t\t|  |     |  |  |  | |  | |_ |       |  | |  . `  | " + RESET);
-        System.out.println(YELLOW + "\t\t\t\t\t\t\t\t|  `----.|  `--'  | |  |__| |       |  | |  |\\   | " + RESET);
-        System.out.println(YELLOW + "\t\t\t\t\t\t\t\t|_______| \\______/   \\______|       |__| |__| \\__| " + RESET);
-        System.out.println(YELLOW + "                                                    " + RESET);     
-        System.out.println();        
- 
+        System.out.println(YELLOW + "\t\t\t\t\t\t\t __        ______     ______         __  .__   __. " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t\t|  |      /  __  \\   /  ____|       |  | |  \\ |  | " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t\t|  |     |  |  |  | |  |  __        |  | |   \\|  | " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t\t|  |     |  |  |  | |  | |_ |       |  | |  . `  | " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t\t|  `----.|  `--'  | |  |__| |       |  | |  |\\   | " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t\t|_______| \\______/   \\______|       |__| |__| \\__| " + RESET);
+        System.out.println(YELLOW + "                                                    " + RESET);
+        System.out.println();
+
     }
-    
+
 }

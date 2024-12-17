@@ -1,9 +1,11 @@
 package display;
-import display.clearScreen;
+
 public class savingsMenu {
+
     private static final String YELLOW = "\u001B[33m";
     private static final String RESET = "\u001B[0m";
     clearScreen clr = new clearScreen();
+
     public void header() {
         clr.clearScreen();
 
@@ -16,5 +18,5 @@ public class savingsMenu {
 
     }
 
-   //menu pa
+    //menu pa
 }

@@ -16,9 +16,9 @@ import java.util.Scanner;
 import user.Needs;
 
 //needs a hello + nickname
-
 public class Login {
-    public static final String GREEN_TEXT = "\u001B[32m"; 
+
+    public static final String GREEN_TEXT = "\u001B[32m";
     public static final String RESET = "\u001B[0m";
     public static final String ORANGE_TEXT = "\u001B[38;5;214m";
     public static final String YELLOW_TEXT = "\u001B[33m";
@@ -51,47 +51,45 @@ public class Login {
         return password;
     }
 
-
     public boolean userLogin() {
-        
-        main : while (true) {
+
+        main:
+        while (true) {
             try {
                 clr.clearScreen();
                 loginDisplay.display();
-                
+
                 email = "";
-                System.out.print(GREEN_TEXT + "\t\t\t\t\t\t\t\t\tEnter Email: " + RESET);
+                System.out.print(GREEN_TEXT + "\t\t\t\t\t\t\tEnter Email: " + RESET);
                 email = s.nextLine().trim();
                 setEmail(email);
-                
-                System.out.print(GREEN_TEXT + "\t\t\t\t\t\t\t\t\tEnter Password: " + RESET);
+
+                System.out.print(GREEN_TEXT + "\t\t\t\t\t\t\tEnter Password: " + RESET);
                 password = s.nextLine().trim();
                 setPassword(password);
-    
-           
+
                 if (validateLogin(getEmail(), getPassword())) {
-                    return true; 
+                    return true;
                 } else {
                     clr.clearScreen();
                     loginDisplay.display();
-                    System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t     * Login failed: Incorrect email or password. " + RESET);
-                    tryagain : while (true) {
-                        System.out.print("\t\t\t\t\t\t\t\t     do you want to try again? (yes/no) : ");
+                    System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t     * Login failed: Incorrect email or password. " + RESET);
+                    tryagain:
+                    while (true) {
+                        System.out.print("\t\t\t\t\t\t\t     do you want to try again? (yes/no) : ");
                         String tryAgain = s.nextLine();
 
-                            if (tryAgain.equalsIgnoreCase("no")) {
-                                return false;
-                            }
-                            else if (tryAgain.equalsIgnoreCase("yes")) {
-                                continue main;
-                            }
-                            else{
-                                clr.clearScreen();
-                                loginDisplay.display();
-                                System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t      * Invalid input. Please try again." + RESET);
+                        if (tryAgain.equalsIgnoreCase("no")) {
+                            return false;
+                        } else if (tryAgain.equalsIgnoreCase("yes")) {
+                            continue main;
+                        } else {
+                            clr.clearScreen();
+                            loginDisplay.display();
+                            System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t      * Invalid input. Please try again." + RESET);
 
-                                continue tryagain;
-                            }
+                            continue tryagain;
+                        }
                     }
                 }
             } catch (Exception e) {
@@ -101,15 +99,11 @@ public class Login {
             }
         }
     }
-    
-    
 
-    
     private boolean validateLogin(String email, String password) {
         try {
             String directory = System.getProperty("user.dir") + "/src/database/accounts";
             File file = new File(directory, email + ".txt");
-    
 
             if (!file.exists()) {
                 clr.clearScreen();
@@ -117,87 +111,76 @@ public class Login {
                 System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t* Login failed: Account does not exist." + RESET);
                 return false;
             }
-    
-        
+
             ArrayList<String> userTxtFile = new ArrayList<>();
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    userTxtFile.add(line.trim()); 
+                    userTxtFile.add(line.trim());
                 }
             }
-    
-  
+
             if (userTxtFile.size() < 2) {
                 clr.clearScreen();
                 loginDisplay.display();
                 System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t* Account file is corrupted or incomplete." + RESET);
-                return false;  
+                return false;
             }
-    
-     
+
             String fileEmail = userTxtFile.get(0);
             String filePassword = userTxtFile.get(1);
-    
-        
-    
+
             if (fileEmail.equals(email) && filePassword.equals(password)) {
                 setEmail(email);
                 setPassword(password);
                 clr.clearScreen();
                 loginDisplay.display();
-                System.out.println(GREEN_TEXT + "\t\t\t\t\t\t\t\t\t\tLogin successful!" + RESET);
-                System.out.println("\n\t\t\t\t\t\t\t\t\t   press enter to continue....");
+                System.out.println(GREEN_TEXT + "\t\t\t\t\t\t\t\t\tLogin successful!" + RESET);
+                System.out.println("\n\t\t\t\t\t\t\t\t   press enter to continue....");
                 s.nextLine();
                 clr.clearScreen();
                 checkDueDates(userTxtFile);
-                System.out.println("\n\t\t\t\t\t\t\t\t\t   press enter to continue....");
+                System.out.println("\n\t\t\t\t\t\t\t\t   press enter to continue....");
                 s.nextLine();
-                return true;  
+                return true;
             } else {
                 clr.clearScreen();
                 loginDisplay.display();
-                System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t* Login failed: Incorrect email or password." + RESET);
-                return false;  
+                System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t* Login failed: Incorrect email or password." + RESET);
+                return false;
             }
-    
+
         } catch (IOException e) {
             clr.clearScreen();
             loginDisplay.display();
-            System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t* Login failed: Error occurred." + RESET);
-            return false;  
+            System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t* Login failed: Error occurred." + RESET);
+            return false;
         }
     }
-    
-    
-
-
 
     private void checkDueDates(ArrayList<String> userTxtFile) {
         LocalDate today = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    
-        String[] dueDates = { "Electricity", "Water", "Rent", "Internet" };
-    
+
+        String[] dueDates = {"Electricity", "Water", "Rent", "Internet"};
+
         for (int i = 4; i < userTxtFile.size() && i < 8; i++) {
             String dueDate = userTxtFile.get(i);
-            String status = userTxtFile.get(i + 4); 
-    
+            String status = userTxtFile.get(i + 4);
+
             if (!dueDate.equalsIgnoreCase("n/a") && !status.equalsIgnoreCase("true")) {
                 try {
                     LocalDate parsedDate = LocalDate.parse(dueDate, formatter);
                     MonthDay dueMonthDay = MonthDay.from(parsedDate);
                     MonthDay todayMonthDay = MonthDay.from(today);
-    
+
                     LocalDate thisYearDueDate = parsedDate.withYear(today.getYear());
                     long daysUntilDue = java.time.temporal.ChronoUnit.DAYS.between(today, thisYearDueDate);
-    
 
                     if (dueMonthDay.equals(todayMonthDay)) {
                         warn.display();
                         System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t* REMINDER : " + dueDates[i - 4] + " payment is due today!" + RESET);
-                    }
-                    else if (daysUntilDue > 0 && daysUntilDue <= 7) {
+                    } else if (daysUntilDue > 0 && daysUntilDue <= 7) {
                         System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t* REMINDER : " + dueDates[i - 4] + " payment is due in " + daysUntilDue + " day(s)." + RESET);
                     }
                 } catch (DateTimeParseException e) {
@@ -210,16 +193,15 @@ public class Login {
     public void displayUserName(String email) {
         String directory = System.getProperty("user.dir") + "/src/database/accounts";
         File file = new File(directory, getEmail() + ".txt");
-    
+
         if (!file.exists()) {
             System.out.println(ORANGE_TEXT + "* Error: Account file does not exist for email: " + email + RESET);
             return;
         }
-    
+
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String name = null;
             String balance = null;
-    
 
             for (int i = 0; i < 4; i++) {
                 String currentLine = reader.readLine();
@@ -227,33 +209,29 @@ public class Login {
                     System.out.println(ORANGE_TEXT + "* Error: Account file does not contain enough lines." + RESET);
                     return;
                 }
-    
+
                 if (i == 2) {
                     name = currentLine;
                 } else if (i == 3) {
                     balance = currentLine;
                 }
             }
-    
+
             // Display the name and remaining balance
             System.out.printf("\t\t\t\t\t\t\t   %-40s%s%s%s%s%n",
-            "Welcome, " + YELLOW_TEXT + name + RESET,
-            "Your balance : ",
-            GREEN_TEXT,
-            "₱" + balance,
-            RESET
+                    "Welcome, " + YELLOW_TEXT + name + RESET,
+                    "Your balance : ",
+                    GREEN_TEXT,
+                    "₱" + balance,
+                    RESET
             );
 
             //System.out.println("\t\t\t\t\t\t\t\t\t\t Your balance :  " + GREEN_TEXT + balance + RESET);
             System.out.println("\n");
-    
+
         } catch (IOException e) {
             System.out.println(ORANGE_TEXT + "* Error: Unable to read the account file for email: " + email + RESET);
         }
     }
-    
-    
-    
 
-    
 }

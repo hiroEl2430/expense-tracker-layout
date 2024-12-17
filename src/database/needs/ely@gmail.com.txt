@@ -1,11 +1,15 @@
 +-------------------------------------------------------------------------+
 | Detail               | Amount          | Information                    |
 +-------------------------------------------------------------------------+
-| Food                 | 33.00           | burger                         |
-| Transportation       | 500.00          | jeep                           |
+| Food                 | 300.00          | fries                          |
+| Food                 | 100.00          | burger                         |
 | Electricity          | 100.00          | N/A                            |
 | Water                | 100.00          | N/A                            |
 | Internet             | 100.00          | N/A                            |
-| Rent                 | 100.00          | N/A                            |
+| Transportation       | 100.00          | jeep                           |
 | Food                 | 100.00          | burger                         |
-| Transportation       | 100.00          | bus                            |
+| Transportation       | 100.00          | jeep                           |
+| Electricity          | 100.00          | N/A                            |
+| Food                 | 100.00          | burger                         |
+| Transportation       | 100.00          | jeep                           |
+| Food                 | 100.00          | burgers                        |

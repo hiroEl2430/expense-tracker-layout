@@ -1,4 +1,10 @@
 +-------------------------------------------------------------------------+
 | Detail               | Amount          | Information                    |
 +-------------------------------------------------------------------------+
-| Shopping             | 100.00          | bags                           |
+| Shopping             | 111.00          | 11                             |
+| Shopping             | 11.00           | 11                             |
+| Shopping             | 100.00          | clothes                        |
+| Stuffs               | 100.00          | toy                            |
+| Gadgets              | 100.00          | phone                          |
+| Travel               | 100.00          | road trip                      |
+| Uncategorized        | 100.00          | ewqe                           |

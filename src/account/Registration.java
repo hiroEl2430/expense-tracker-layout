@@ -10,9 +10,9 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
-
 public class Registration {
-    public static final String GREEN_TEXT = "\u001B[32m"; 
+
+    public static final String GREEN_TEXT = "\u001B[32m";
     public static final String RESET = "\u001B[0m";
     public static final String ORANGE_TEXT = "\u001B[38;5;214m";
     private final Scanner s = new Scanner(System.in);
@@ -41,29 +41,26 @@ public class Registration {
         income = getIncome();
         registerUtilityDueDates();
         saveAccountDetails();
-        
+
     }
 
     private String getEmail() {
         while (true) {
-            System.out.print(GREEN_TEXT + "\t\t\t\t\t\t\t\tEnter your email : " + RESET);
+            System.out.print(GREEN_TEXT + "\t\t\t\t\t\t\t  Enter your email : " + RESET);
             String input = s.nextLine();
 
             if (input.isEmpty()) {
                 System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t * Email is required." + RESET);
-            }
-            else if (!input.contains("@") || !input.contains(".")) {
+            } else if (!input.contains("@") || !input.contains(".")) {
                 clr.clearScreen();
                 registration.display();
                 //System.out.println("\n\n");
-                System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t* REMINDER : Email should contain '@' and '.'" + RESET);
-            }
-            else if (isEmailExists(input)) {
+                System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t  * REMINDER : Email should contain '@' and '.'" + RESET);
+            } else if (isEmailExists(input)) {
                 clr.clearScreen();
                 registration.display();
-                System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t * This email is already registered." + RESET);
-            }
-            else {
+                System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t  * This email is already registered." + RESET);
+            } else {
                 return input;
             }
         }
@@ -72,7 +69,7 @@ public class Registration {
     private String getPassword() {
         clr.clearScreen();
         registration.display();
-        System.out.print(GREEN_TEXT + "\t\t\t\t\t\t\t\tEnter your password : " + RESET);
+        System.out.print(GREEN_TEXT + "\t\t\t\t\t\t\t  Enter your password : " + RESET);
         String registerpassword = s.nextLine();
         return registerpassword;
     }
@@ -80,7 +77,7 @@ public class Registration {
     private String getNickname() {
         clr.clearScreen();
         registration.display();
-        System.out.print(GREEN_TEXT + "\t\t\t\t\t\t\t\tEnter your nickname : " + RESET);
+        System.out.print(GREEN_TEXT + "\t\t\t\t\t\t\t  Enter your nickname : " + RESET);
         String registernickname = s.nextLine();
         return registernickname;
     }
@@ -92,16 +89,16 @@ public class Registration {
             termsAndConditions.display();
             clr.clearScreen();
             registration.display();
-        
-            while(true){
-                System.out.print(GREEN_TEXT + "\t\t\t\t\t\t\t\tEnter your monthly income : " + RESET);
+
+            while (true) {
+                System.out.print(GREEN_TEXT + "\t\t\t\t\t\t\t  Enter your monthly income : " + RESET);
                 try {
                     return Double.parseDouble(s.nextLine());
-            
+
                 } catch (NumberFormatException e) {
                     clr.clearScreen();
                     registration.display();
-                    System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t * Invalid input. Please use / enter a numeric value." + RESET);
+                    System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t   * Invalid input. Please use / enter a numeric value." + RESET);
                     continue;
                 }
             }
@@ -119,8 +116,8 @@ public class Registration {
         while (true) {
             clr.clearScreen();
             registration.display();
-            System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t* FORMAT : (YYYY-MM-DD) or type 'skip' " + RESET);
-            System.out.print(GREEN_TEXT + "\t\t\t\t\t\t\t\tEnter due date for " + utilityName + " : " + RESET);
+            System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t  * FORMAT : (YYYY-MM-DD) or type 'skip' " + RESET);
+            System.out.print(GREEN_TEXT + "\t\t\t\t\t\t\t  Enter due date for " + utilityName + " : " + RESET);
             String input = s.nextLine();
 
             if (input.equalsIgnoreCase("skip")) {
@@ -132,7 +129,7 @@ public class Registration {
             } catch (DateTimeParseException e) {
                 clr.clearScreen();
                 registration.display();
-                System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t* Invalid date format. Please try again." + RESET);
+                System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t  * Invalid date format. Please try again." + RESET);
             }
         }
     }
@@ -170,21 +167,21 @@ public class Registration {
             if (!savingsFolder.exists() && !savingsFolder.mkdirs()) {
                 clr.clearScreen();
                 registration.display();
-                System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t* Error ! Please Try Again." + RESET);
+                System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t  * Error ! Please Try Again." + RESET);
                 return;
             }
 
             if (!wantsFolder.exists() && !wantsFolder.mkdirs()) {
                 clr.clearScreen();
                 registration.display();
-                System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t* Error ! Please Try Again."  + RESET);
+                System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t  * Error ! Please Try Again." + RESET);
                 return;
             }
 
             if (!needsFolder.exists() && !needsFolder.mkdirs()) {
                 clr.clearScreen();
                 registration.display();
-                System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t* Error ! Please Try Again." + RESET);
+                System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t  * Error ! Please Try Again." + RESET);
                 return;
             }
 
@@ -192,7 +189,7 @@ public class Registration {
             if (accountFile.exists()) {
                 clr.clearScreen();
                 registration.display();
-                System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t* Account file already exists. Can't overwrite." + RESET);
+                System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t  * Account file already exists. Can't overwrite." + RESET);
                 return;
             }
 
@@ -242,17 +239,13 @@ public class Registration {
                 }
             }*/
 
-            try(BufferedWriter writer = new BufferedWriter(new FileWriter(savingsFile, true))){
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(savingsFile, true))) {
 
-
-               
                 writer.write("+----------------------+-----------------+------------------+-----------------+-----------------+-------------------+---------------+\n");
                 writer.write("| Savings Name         | Goal Amount     | Saved So Far     | Frequency       | End Date        | Remaining Balance | Status        |\n");
                 writer.write("+----------------------+-----------------+------------------+-----------------+-----------------+-------------------+---------------+\n");
-               
-    
-                }
-                catch (IOException e) {
+
+            } catch (IOException e) {
             }
 
             File needsFile = new File(needsFolder, email + ".txt");
@@ -264,20 +257,16 @@ public class Registration {
                 }
             }*/
 
-            try(BufferedWriter writer = new BufferedWriter(new FileWriter(needsFile, true))){
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(needsFile, true))) {
 
-            //writer.write("Needs\n");
+                //writer.write("Needs\n");
                 writer.write("+-------------------------------------------------------------------------+\n");
                 writer.write("| Detail               | Amount          | Information                    |\n");
                 writer.write("+-------------------------------------------------------------------------+\n");
 
-                
-
-
-                } catch (IOException e) {
-                    System.out.println("\t\t\t\t\t\t\t\tFailed to create needs file.");
+            } catch (IOException e) {
+                System.out.println("\t\t\t\t\t\t\t\tFailed to create needs file.");
             }
-
 
             File wantsFile = new File(wantsFolder, email + ".txt");
             /*if (!wantsFile.exists()) {
@@ -291,21 +280,21 @@ public class Registration {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(wantsFile, true))) {
 
                 //writer.write("Needs\n");
-                    writer.write("+-------------------------------------------------------------------------+\n");
-                    writer.write("| Detail               | Amount          | Information                    |\n");
-                    writer.write("+-------------------------------------------------------------------------+\n");    
-    
-                } catch (IOException e) {
-                    System.out.println("Failed to create needs file.");
+                writer.write("+-------------------------------------------------------------------------+\n");
+                writer.write("| Detail               | Amount          | Information                    |\n");
+                writer.write("+-------------------------------------------------------------------------+\n");
+
+            } catch (IOException e) {
+                System.out.println("Failed to create needs file.");
             }
 
             clr.clearScreen();
             registration.display();
-            System.out.println(GREEN_TEXT + "\t\t\t\t\t\t\t\t\tAccount successfully created!" + RESET);
+            System.out.println(GREEN_TEXT + "\t\t\t\t\t\t\t\tAccount successfully created!" + RESET);
             System.out.println("\n");
-            System.out.println("\t\t\t\t\t\t\t\t   press enter to go back to main menu...");
+            System.out.println("\t\t\t\t\t\t\t   press enter to go back to main menu...");
             s.nextLine();
-    
+
         } catch (IOException e) {
             System.out.println("Failed to create account or savings file. Please try again.");
         }

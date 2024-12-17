@@ -5,7 +5,8 @@ import display.clearScreen;
 import java.io.File;
 
 public class AccountDeleter extends AccountEditor {
-    public static final String GREEN_TEXT = "\u001B[32m"; 
+
+    public static final String GREEN_TEXT = "\u001B[32m";
     public static final String RESET = "\u001B[0m";
     public static final String ORANGE_TEXT = "\u001B[38;5;214m";
     private final Verification verifier = new Verification();
@@ -15,20 +16,20 @@ public class AccountDeleter extends AccountEditor {
 
     public void deleteAccount() {
         while (true) {
-            
+
             try {
                 clr.clearScreen();
                 myAccount.header();
                 if (verifier.verifyEmail(this) && verifier.verifyPassword(this)) {
                     clr.clearScreen();
                     myAccount.header();
-                    if (confirm.confirmAction(ORANGE_TEXT + "\t\t\t\t\t\t\t\t Are you sure you want to delete your account? (y/n): " + RESET)) {
+                    if (confirm.confirmAction(ORANGE_TEXT + "\n\t\t\t\t\t\t\t  Are you sure you want to delete your account? (y/n): " + RESET)) {
                         deleteAllFiles();
                         return;
                     } else {
                         clr.clearScreen();
                         myAccount.header();
-                        System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t* Account deletion cancelled." + RESET);
+                        System.out.println(ORANGE_TEXT + "\n\t\t\t\t\t\t\t  * Account deletion cancelled." + RESET);
                     }
                 } else {
                     clr.clearScreen();
@@ -38,7 +39,7 @@ public class AccountDeleter extends AccountEditor {
             } catch (Exception e) {
                 clr.clearScreen();
                 myAccount.header();
-                System.out.println(" An error occurred during account deletion. "  + RESET);
+                System.out.println(" An error occurred during account deletion. " + RESET);
             }
         }
     }
@@ -67,8 +68,8 @@ public class AccountDeleter extends AccountEditor {
             } else {
                 System.out.println("File not found: " + filePath);
             }
-        }  catch (Exception e) {
-            System.out.println("An error occurred while deleting the file: " + filePath); 
+        } catch (Exception e) {
+            System.out.println("An error occurred while deleting the file: " + filePath);
         }
     }
 }

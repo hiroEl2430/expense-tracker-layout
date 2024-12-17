@@ -9,10 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-
 public class AccountEditor {
 
-    public static final String GREEN_TEXT = "\u001B[32m"; 
+    public static final String GREEN_TEXT = "\u001B[32m";
     public static final String RESET = "\u001B[0m";
     public static final String ORANGE_TEXT = "\u001B[38;5;214m";
     public static final String YELLOW_TEXT = "\u001B[33m";
@@ -66,7 +65,6 @@ public class AccountEditor {
         return newPassword;
     }
 
-
     //paths of the folders to be updated
     public void updateEmail() {
         String baseDirectory = System.getProperty("user.dir") + "/src/database";
@@ -76,17 +74,17 @@ public class AccountEditor {
         renameFile(baseDirectory + "/wants");
         renameFile(baseDirectory + "/needs");
 
-        if(changed){
+        if (changed) {
             clr.clearScreen();
             myAccount.header();
-            System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t    Email changed successfully." + RESET);
-            System.out.println("\n\n\t\t\t\t\t\t\t\t\t    press enter to continue...");
+            System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t    Email changed successfully." + RESET);
+            System.out.println("\n\n\t\t\t\t\t\t\t\t    press enter to continue...");
             s.nextLine();
         } else {
             clr.clearScreen();
             myAccount.header();
-            System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t    * Can't change Email. Please try again." + RESET);
-            System.out.println("\n\n\t\t\t\t\t\t\t\t\t    press enter to continue...");
+            System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t    * Can't change Email. Please try again." + RESET);
+            System.out.println("\n\n\t\t\t\t\t\t\t\t    press enter to continue...");
             s.nextLine();
         }
     }
@@ -108,16 +106,14 @@ public class AccountEditor {
                 File newFile = new File(directoryPath, getNewEmail() + ".txt");
                 if (oldFile.renameTo(newFile)) {
                     changed = true;
-                } 
-                else {
+                } else {
                     changed = false;
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }    
+        }
     }
-
 
     //changing the password of the text files in accounts folder (line 2)
     public void updatePassword() {
@@ -134,16 +130,16 @@ public class AccountEditor {
                 Files.write(file.toPath(), lines);
                 clr.clearScreen();
                 myAccount.header();
-                System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t    Password changed successfully." + RESET);
-                System.out.println("\n\n\t\t\t\t\t\t\t\t\t    press enter to continue...");
+                System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t    Password changed successfully." + RESET);
+                System.out.println("\n\n\t\t\t\t\t\t\t\t    press enter to continue...");
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
             clr.clearScreen();
             myAccount.header();
-            System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t * Can't change Password. Please try again." + RESET);
-            System.out.println("\n\n\t\t\t\t\t\t\t\t\t    press enter to continue...");
+            System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t * Can't change Password. Please try again." + RESET);
+            System.out.println("\n\n\t\t\t\t\t\t\t\t    press enter to continue...");
         }
     }
 
@@ -162,16 +158,16 @@ public class AccountEditor {
                 Files.write(file.toPath(), lines);
                 clr.clearScreen();
                 myAccount.header();
-                System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t   Income changed successfully." + RESET);
-                System.out.println("\n\n\t\t\t\t\t\t\t\t\t    press enter to continue...");
+                System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t   Income changed successfully." + RESET);
+                System.out.println("\n\n\t\t\t\t\t\t\t\t    press enter to continue...");
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
             clr.clearScreen();
             myAccount.header();
-            System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t  * Can't change Income. Please try again." + RESET);
-            System.out.println("\n\n\t\t\t\t\t\t\t\t\t    press enter to continue...");
+            System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t  * Can't change Income. Please try again." + RESET);
+            System.out.println("\n\n\t\t\t\t\t\t\t\t    press enter to continue...");
         }
     }
 
@@ -180,5 +176,5 @@ public class AccountEditor {
         File file = new File(directoryPath, email + ".txt");
         return file.exists();
     }
-    
+
 }
