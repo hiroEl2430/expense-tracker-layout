@@ -16,9 +16,10 @@ import java.util.Scanner;
 /*
     This class is used to start the expense tracker
     dito lahat nilalagay lahat ng classes na ginawa natin under user folder
-*/
+ */
 public class userMain {
-    public static final String GREEN_TEXT = "\u001B[32m"; 
+
+    public static final String GREEN_TEXT = "\u001B[32m";
     public static final String RESET = "\u001B[0m";
     public static final String ORANGE_TEXT = "\u001B[38;5;214m";
     public static final String YELLOW_TEXT = "\u001B[33m";
@@ -39,9 +40,7 @@ public class userMain {
 
     public void startExpenseTracker(Savings savings, Needs needs, Wants wants) {
         Scanner s = new Scanner(System.in);
-        
-    
-   
+
         double income = userIncome();
         if (income <= 0) {
             clr.clearScreen();
@@ -49,26 +48,26 @@ public class userMain {
             System.out.println("\t\t\t\t\t\t\tAutomatically proceeding to user menu." + RESET);
             System.out.println("\n\n\t\t\t\t\t\t\t\tpress enter to continue...");
             s.nextLine();
-            return; 
+            return;
         }
-    
+
         boolean normal = false;
-    
+
         // Check if it's the first day of the month
         if (day.isFirstDayOfMonth(todayDate)) {
             firstDayofMonth();
         }
-    
+
         normal = true;
-    
+
         if (normal) {
             // Layout
             menu.header();
             menu.menu();
-    
-            System.out.println("Enter your choice : ");
+
+            System.out.println(GREEN_TEXT + "\t\t\t\t\t\t\t  Enter your choice : " + RESET);
             int choice = s.nextInt();
-    
+
             switch (choice) {
                 case 1:
                     needs.needs();
@@ -87,7 +86,6 @@ public class userMain {
             }
         }
     }
-    
 
     public void firstDayofMonth() {
         Scanner s = new Scanner(System.in);
